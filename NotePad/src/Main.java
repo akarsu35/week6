@@ -4,18 +4,21 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        CreatFile(Word());
-        System.out.println();
-        ReadFile();
+        Word();
+
 
     }
-    public static String Word(){
+    public static void Word(){//kullanıcıdan metin girmesini istiyoruz.
         Scanner scanner = new Scanner(System.in);
         System.out.print("Bir metin giriniz : ");
         String word = scanner.nextLine();
-        return word;
+        CreatFile(word);
+        System.out.println();
+        ReadFile();
+
+
     }
-    public static void CreatFile(String word){
+    public static void CreatFile(String word){//dosya oluşturma ve yazma işlemi
         try {
             FileWriter fileWriter=new FileWriter("notepad.txt");
             BufferedWriter bufferedWriter=new BufferedWriter(fileWriter);
@@ -26,7 +29,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
     }
-    public static void ReadFile(){
+    public static void ReadFile(){//dosyadaki verileri okuma
         try {
             FileReader fileReader=new FileReader("notepad.txt");
             BufferedReader bufferedReader=new BufferedReader(fileReader);
@@ -41,7 +44,7 @@ public class Main {
 
             bufferedReader.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());;
+            System.out.println(e.getMessage());
         }
 
     }
